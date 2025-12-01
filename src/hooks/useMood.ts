@@ -9,3 +9,6 @@ export const useMood = () => {
   return context;
 };
 
+export type MoodLevel = 'low' | 'medium' | 'high';
+export type EnergyLevel = 'low' | 'medium' | 'high';
+export type StressLevel = 'low' | 'medium' | 'high';

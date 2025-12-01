@@ -3,14 +3,16 @@ import Layout from '../components/layout/Layout';
 import MobilePageHeader from '../components/layout/MobilePageHeader';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
-import { useMood, type MoodLevel, type EnergyLevel, type StressLevel } from '../hooks/useMood';
+import { useMood } from '../hooks/useMood';
+import type { MoodLevel, EnergyLevel, StressLevel } from '../context/MoodContext';
+
 import { ChartIcon } from '../components/common/Icons';
 
 const MoodTracker: React.FC = () => {
-  const { todayEntry, recentEntries, addMoodEntry, getMoodPattern } = useMood();
-  const [mood, setMood] = useState<MoodLevel>(todayEntry?.mood || 'okay');
-  const [energy, setEnergy] = useState<EnergyLevel>(todayEntry?.energy || 'medium');
-  const [stress, setStress] = useState<StressLevel>(todayEntry?.stress || 'medium');
+  const { todayEntry, addMoodEntry, getMoodPattern } = useMood();
+  const [mood, setMood] = useState<MoodLevel>((todayEntry?.mood as MoodLevel) || 'okay');
+  const [energy, setEnergy] = useState<EnergyLevel>((todayEntry?.energy as EnergyLevel) || 'medium');
+  const [stress, setStress] = useState<StressLevel>((todayEntry?.stress as StressLevel) || 'medium');
   const [submitted, setSubmitted] = useState(!!todayEntry);
 
   const pattern = getMoodPattern();
@@ -79,9 +81,9 @@ const MoodTracker: React.FC = () => {
                   <Button
                     variant="outline"
                     onClick={() => {
-                      setMood(todayEntry?.mood || 'okay');
-                      setEnergy(todayEntry?.energy || 'medium');
-                      setStress(todayEntry?.stress || 'medium');
+                      setMood((todayEntry?.mood as MoodLevel) || 'okay');
+                      setEnergy((todayEntry?.energy as EnergyLevel) || 'medium');
+                      setStress((todayEntry?.stress as StressLevel) || 'medium');
                       setSubmitted(false);
                     }}
                   >

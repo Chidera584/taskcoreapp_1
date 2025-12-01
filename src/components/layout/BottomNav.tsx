@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { DashboardIcon, TasksIcon, NotificationIcon, SettingsIcon, PomodoroIcon, MoodIcon } from '../common/Icons';
+import { DashboardIcon, TasksIcon, NotificationIcon, PomodoroIcon, MoodIcon } from '../common/Icons';
+
 
 const BottomNav: React.FC = () => {
   const location = useLocation();

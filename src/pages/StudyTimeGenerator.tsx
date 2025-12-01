@@ -6,7 +6,8 @@ import Button from '../components/common/Button';
 import { useStudySchedule } from '../hooks/useStudySchedule';
 import { useTasks } from '../hooks/useTasks';
 import { useNotifications } from '../hooks/useNotifications';
-import { PlusIcon, TrashIcon, EditIcon, ClockIcon } from '../components/common/Icons';
+import { PlusIcon, TrashIcon, ClockIcon } from '../components/common/Icons';
+
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -30,8 +31,7 @@ const StudyTimeGenerator: React.FC = () => {
 
   const [showClassForm, setShowClassForm] = useState(false);
   const [showFreePeriodForm, setShowFreePeriodForm] = useState(false);
-  const [editingClass, setEditingClass] = useState<string | null>(null);
-  const [editingPeriod, setEditingPeriod] = useState<string | null>(null);
+
 
   const [classForm, setClassForm] = useState({
     name: '',
@@ -149,7 +149,6 @@ const StudyTimeGenerator: React.FC = () => {
                   size="sm"
                   onClick={() => {
                     setShowClassForm(!showClassForm);
-                    setEditingClass(null);
                     setClassForm({ name: '', day: 1, startTime: '09:00', endTime: '10:30' });
                   }}
                 >
@@ -297,7 +296,7 @@ const StudyTimeGenerator: React.FC = () => {
                   size="sm"
                   onClick={() => {
                     setShowFreePeriodForm(!showFreePeriodForm);
-                    setEditingPeriod(null);
+            
                     setFreePeriodForm({ day: 1, startTime: '14:00', endTime: '16:00', label: '' });
                   }}
                 >

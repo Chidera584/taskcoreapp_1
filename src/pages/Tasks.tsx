@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { FilterOptions, Priority, TaskCategory, Task } from '../types/task.types';
+import type {FilterOptions, Priority, TaskCategory, Task } from '../types/task.types';
 import Layout from '../components/layout/Layout';
 import MobilePageHeader from '../components/layout/MobilePageHeader';
 import Card from '../components/common/Card';
@@ -349,7 +349,7 @@ const Tasks: React.FC = () => {
             setSelectedTask(null);
           }}
           task={selectedTask}
-          onSubmit={(taskData: TaskFormData) => {
+          onSubmit={(taskData: any) => {
             updateTask(selectedTask.id, taskData);
             addNotification({
               type: 'success',
